@@ -1,0 +1,9 @@
+<form action="{% url 'polls:choice' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1> Add new choice for {{ question.question_text }}</h1></legend>
+        <input type="text" name="new_choice:" value="New Choice" ><br>
+        <input type="text" value="" name="">
+    </fieldset>
+    <input type="submit" value="Addchoice!">
+</form>
