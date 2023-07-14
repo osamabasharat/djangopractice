@@ -33,28 +33,29 @@ def results(request, question_id):
 #particular question.
 
     
+# 
 def choice(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    try:
-        choice_to_add = request.POST["new_choice"]
-        if not choice_to_add:
-            raise KeyError
-    except(KeyError):
-         return render(
-            request,
-            "polls/choice.html",
-            {
+    if request.method == 'GET':
+        
+        return render(request, "polls/choice.html", {"question": question})
+    elif request.method == 'POST':
+        user_submitted_choice = request.POST["choice"]
+        if not user_submitted_choice:
+            #question = get_object_or_404(Question, pk=question_id)
+            return render(request, "polls/choice.html", {
                 "question": question,
-                "error_message": "The choice could not be added.",
-            },
+                "error_message": "Please enter a valid choice"
+            })
+            #return HttpResponse("Please enter a valid choice")
+        new_choice = Choice(
+            question = question,
+            choice_text=user_submitted_choice,
         )
-    else:
-        newChoice=Choice(
-            question=question,
-            choice_text= choice_to_add
-        )
-        newChoice.save()
+        new_choice.save()
         return HttpResponseRedirect(reverse("polls:detail", args=(question.id,)))
+        #return HttpResponse("You didnot make a GET response!")
+
 
     
 

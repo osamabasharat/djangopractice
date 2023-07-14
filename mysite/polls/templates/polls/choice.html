@@ -1,9 +1,14 @@
 <form action="{% url 'polls:choice' question.id %}" method="post">
     {% csrf_token %}
-    <fieldset>
+    <h1>You are adding a choice for: "{{ question.question_text }}"</h1>
+    <label for="choice">Enter new choice:</label>
+    <!-- <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br> -->
+    <input type="text" value="" name="choice">
+    <input type="submit" value="Add" id="choice">
+    <!-- <fieldset>
         <legend><h1> Add new choice for {{ question.question_text }}</h1></legend>
         <input type="text" name="new_choice:" value="New Choice" ><br>
         <input type="text" value="" name="">
     </fieldset>
-    <input type="submit" value="Addchoice!">
+    <input type="submit" value="Addchoice!"> -->
 </form>
