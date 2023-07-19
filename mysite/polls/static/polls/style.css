@@ -1,0 +1,50 @@
+
+li a {
+    color: rgb(4, 4, 4);
+    text-decoration: none;
+    font-size: xx-large;
+    font-family: Agency FB;
+    display: inline-block;
+    list-style-type: none;
+   
+}
+body {
+    background-image: url(Heading.png);
+    /* background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; */
+    background-size: cover;
+
+
+
+    /* background-color: #DA9D4D; */
+}
+h1 {
+    text-align: center;
+    font-family: Agency FB;
+}
+ul {
+    text-align: left;
+    list-style-type: none;
+    
+}
+.alink {
+    font-size: xx-large;
+    font-family: Agency FB;
+    text-decoration-line: none;
+   
+    background-color: antiquewhite;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+    
+}
+a {
+   text-decoration: none;
+   color: rgb(8, 8, 8);
+}
+.alink:hover, a:active {
+    background-color: rgb(151, 122, 44);
+}
