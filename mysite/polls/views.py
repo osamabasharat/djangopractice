@@ -6,6 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 #from django.shortcuts import render
 from .models import Choice, Question
 from django.urls import reverse
+from django.utils import timezone
 #raising a 404 error
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
@@ -72,6 +73,17 @@ def add_question(request):
             return render(request, "polls/index.html", {
                 "error_message": "Please enter a valid question"
             })
+        new_question = Question(
+            question_text = user_submitted_question,
+            pub_date = timezone.now(),
+
+        )
+        new_question.save()
+    return HttpResponseRedirect(reverse("polls:index",)) 
+
+def update_question(request, question_id):
+    pass
+    
 
 
 
