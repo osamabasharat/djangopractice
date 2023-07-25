@@ -48,3 +48,7 @@ a {
 .alink:hover, a:active {
     background-color: rgb(151, 122, 44);
 }
+header img {
+    float: left;
+    height: 50px ;
+}

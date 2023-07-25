@@ -1,13 +1,25 @@
-<h1>{{ question.question_text }}</h1>
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-<a href="{% url 'polls:vote_reset' question.id %}">Reset Vote?</a>
+{% extends 'base.html' %}
 
-<!-- Now, go to /polls/1/ in your browser and vote in the question. 
-You should see a results page that gets updated each time you vote. 
-If you submit the form without having chosen a choice, you should 
-see the error message. -->
+{% load static %}
+{% block page_links %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+{% endblock  %}
+
+{% block page_title %}
+Ressults for "{{ question.question_text }}"
+{% endblock  %}
+{% block page_body %}
+    <h1>{{ question.question_text }}</h1>
+    <ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{choice.votes|pluralize }}</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    <a href="{% url 'polls:vote_reset' question.id %}">Reset Vote?</a>
+
+    <!-- Now, go to /polls/1/ in your browser and vote in the question. 
+    You should see a results page that gets updated each time you vote. 
+    If you submit the form without having chosen a choice, you should 
+    see the error message. -->
+{% endblock %}

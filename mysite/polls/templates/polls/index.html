@@ -1,17 +1,27 @@
+{% extends 'base.html' %}
+
 {% load static %}
+{% block page_links %}
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+{% endblock  %}
+
+{% block page_title %}
+Polls Application
+{% endblock  %}
+{% block page_body %}
 <h1><i>Polls Application</i></h1>
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
+   {% if latest_question_list %}
+      <ul>
+      {% for question in latest_question_list %}
         <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
-    {% endfor %}
+      {% endfor %}
     </ul>
     <div class="alink" ><a href = "{% url 'polls:new' %}"> Add Question </a></div>
     {% comment %} <a href = "{% url 'polls:new' %}"> Delete </a> {% endcomment %}
-{% else %}
+   {% else %}
     <p>No polls are available.</p>
-{% endif %}
+   {% endif %}
+{% endblock  %}
 {% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
